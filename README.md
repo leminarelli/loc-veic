@@ -1,6 +1,4 @@
-# Sistema para Aluguel de Carros
-
-Projeto de Aluguel de Carros
+# Locação de Veículos
 
 Desenvolvido com Typescript, Node, React e SQLite.
 
