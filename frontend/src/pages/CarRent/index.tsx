@@ -4,8 +4,8 @@ import { FiArrowLeft } from 'react-icons/fi'
 import { FormProvider, useForm } from 'react-hook-form'
 
 import api from '../../services/api'
-import './styles.css'
 import logopng from '../../assets/logo.png'
+import { Container } from './CarRent.styles'
 
 export default function CarRent() {
 	const history = useHistory()
@@ -28,7 +28,7 @@ export default function CarRent() {
 	// const fDirtyFields = fMethods.formState.dirtyFields
 
 	return (
-		<div className="new-car-container">
+		<Container>
 			<div className="content">
 				<section>
 					<img src={logopng} alt="Minarelli - Aluguel de Carros" />
@@ -83,6 +83,6 @@ export default function CarRent() {
 					</form>
 				</FormProvider>
 			</div>
-		</div>
+		</Container>
 	)
 }

@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import { FiPower, FiTrash2 } from 'react-icons/fi'
+import { FiTrash2 } from 'react-icons/fi'
 
-import './styles.css'
+import { Container, Title, Card } from './Dashboard.styles'
 
 import api from '../../services/api'
 
-import logopng from '../../assets/logo.png'
 import { Cars } from '../../models/Cars'
+import { Header } from '../../components/Header'
 
 export default function Dashboard() {
 	const [cars, setCars] = useState([])
 
 	const userId = localStorage.getItem('userId')
-	const userName = localStorage.getItem('userName')
-
-	const history = useHistory()
 
 	useEffect(() => {
 		api
@@ -43,31 +39,15 @@ export default function Dashboard() {
 		}
 	}
 
-	function handleLogout() {
-		localStorage.clear()
-
-		history.push('/')
-	}
-
 	return (
-		<div className="profile-container">
-			<header>
-				<img src={logopng} alt="Minarelli - Aluguel de Carros" />
-				<span> Olá, {userName} </span>
-
-				<Link className="button" to="/cars/new">
-					Cadastrar novo carro
-				</Link>
-				<button onClick={handleLogout} type="button">
-					<FiPower size={18} color="#f99988" />
-				</button>
-			</header>
+		<Container>
+			<Header />
 
 			<h1> Carros Cadastrados</h1>
-			<ul>
+			<Card>
 				{cars.map((car: Cars) => (
 					<li key={car.id}>
-						<p className="title"> CARRO DISPONÍVEL PARA LOCAÇÃO </p>
+						<Title> CARRO DISPONÍVEL PARA LOCAÇÃO </Title>
 
 						<p>
 							MODELO: <label> {car.model} </label>
@@ -100,7 +80,7 @@ export default function Dashboard() {
 						</button>
 					</li>
 				))}
-			</ul>
-		</div>
+			</Card>
+		</Container>
 	)
 }

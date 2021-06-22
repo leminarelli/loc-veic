@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FiLogIn } from 'react-icons/fi'
+
 import { FormProvider, useForm } from 'react-hook-form'
 
-import './styles.css'
+import { Container } from './Login.styles'
 import api from '../../services/api'
 
 import carpng from '../../assets/car.png'
@@ -29,8 +30,8 @@ export default function Login() {
 	// const fDirtyFields = fMethods.formState.dirtyFields
 
 	return (
-		<div className="logon-container">
-			<section className="form">
+		<Container>
+			<section>
 				<img src={logopng} alt="Minarelli - Aluguel de Carros" />
 				<FormProvider {...fMethods}>
 					<form onSubmit={fMethods.handleSubmit(handleLogin)}>
@@ -53,6 +54,6 @@ export default function Login() {
 			</section>
 
 			<img src={carpng} alt="Cars" />
-		</div>
+		</Container>
 	)
 }

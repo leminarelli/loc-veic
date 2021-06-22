@@ -52,3 +52,9 @@ export const Content = styled.div`
 		}
 	}
 `
+export const InputGroup = styled.div`
+	display: flex;
+	input + input {
+		margin-left: 8px;
+	}
+`

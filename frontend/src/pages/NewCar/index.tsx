@@ -2,9 +2,9 @@ import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
 import { FormProvider, useForm } from 'react-hook-form'
+import { Container, Content } from './NewCar.styles'
 
 import api from '../../services/api'
-import './styles.css'
 import logopng from '../../assets/logo.png'
 
 export default function CarRent() {
@@ -28,8 +28,8 @@ export default function CarRent() {
 	// const fDirtyFields = fMethods.formState.dirtyFields
 
 	return (
-		<div className="new-car-container">
-			<div className="content">
+		<Container>
+			<Content>
 				<section>
 					<img src={logopng} alt="Minarelli - Aluguel de Carros" />
 					<h1>Cadastro de veículo </h1>
@@ -81,7 +81,7 @@ export default function CarRent() {
 						</button>
 					</form>
 				</FormProvider>
-			</div>
-		</div>
+			</Content>
+		</Container>
 	)
 }

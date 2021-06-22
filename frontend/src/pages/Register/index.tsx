@@ -5,7 +5,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 
 import api from '../../services/api'
 
-import './styles.css'
+import { Container, Content, InputGroup } from './Register.styles'
 import logopng from '../../assets/logo.png'
 
 export default function Register() {
@@ -29,8 +29,8 @@ export default function Register() {
 	// const fDirtyFields = fMethods.formState.dirtyFields
 
 	return (
-		<div className="register-container">
-			<div className="content">
+		<Container>
+			<Content>
 				<section>
 					<img src={logopng} alt="Minarelli - Aluguel de Carros" />
 
@@ -65,7 +65,7 @@ export default function Register() {
 							})}
 						/>
 
-						<div className="input-group">
+						<InputGroup>
 							<input
 								placeholder="Cidade"
 								{...fMethods.register('city', {
@@ -80,14 +80,14 @@ export default function Register() {
 								})}
 								style={{ width: 80 }}
 							/>
-						</div>
+						</InputGroup>
 
 						<button className="button" type="submit">
 							Cadastrar
 						</button>
 					</form>
 				</FormProvider>
-			</div>
-		</div>
+			</Content>
+		</Container>
 	)
 }
