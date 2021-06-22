@@ -60,7 +60,6 @@ export default function CarRent() {
 							{...fMethods.register('price', {
 								required: true,
 							})}
-							type="value"
 						/>
 
 						<input

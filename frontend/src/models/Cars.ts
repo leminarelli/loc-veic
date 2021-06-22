@@ -5,6 +5,6 @@ export interface Cars {
 	description: string
 	city: string
 	uf: string
-	price: string
+	price: number | bigint
 	user: string
 }

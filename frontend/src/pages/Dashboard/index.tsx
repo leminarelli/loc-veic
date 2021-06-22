@@ -7,6 +7,7 @@ import './styles.css'
 import api from '../../services/api'
 
 import logopng from '../../assets/logo.png'
+import { Cars } from '../../models/Cars'
 
 export default function Dashboard() {
 	const [cars, setCars] = useState([])
@@ -64,50 +65,41 @@ export default function Dashboard() {
 
 			<h1> Carros Cadastrados</h1>
 			<ul>
-				{cars.map(
-					(car: {
-						id: any
-						model: any
-						year: any
-						description: any
-						city: any
-						value: number | bigint
-					}) => (
-						<li key={car.id}>
-							<p className="title"> CARRO DISPONÍVEL PARA LOCAÇÃO </p>
+				{cars.map((car: Cars) => (
+					<li key={car.id}>
+						<p className="title"> CARRO DISPONÍVEL PARA LOCAÇÃO </p>
 
-							<p>
-								MODELO: <label> {car.model} </label>
-							</p>
+						<p>
+							MODELO: <label> {car.model} </label>
+						</p>
 
-							<p>
-								ANO: <label> {car.year} </label>
-							</p>
+						<p>
+							ANO: <label> {car.year} </label>
+						</p>
 
-							<p>
-								DESCRIÇÃO: <label> {car.description} </label>
-							</p>
+						<p>
+							DESCRIÇÃO: <label> {car.description} </label>
+						</p>
 
-							<p>
-								CIDADE: <label> {car.city} </label>
-							</p>
+						<p>
+							CIDADE: <label> {car.city} </label>
+						</p>
 
-							<p>
-								VALOR:
-								<label>
-									{Intl.NumberFormat('pr-BR', {
-										style: 'currency',
-										currency: 'BRL',
-									}).format(car.value)}
-								</label>
-							</p>
+						<p>
+							VALOR:
+							<label>
+								{Intl.NumberFormat('pr-BR', {
+									style: 'currency',
+									currency: 'BRL',
+								}).format(car.price)}
+							</label>
+						</p>
 
-							<button onClick={() => handleDeleteCar(car.id)} type="button">
-								<FiTrash2 size={18} color="#a8a8b3" />
-							</button>
-						</li>
-					)
-				)}
+						<button onClick={() => handleDeleteCar(car.id)} type="button">
+							<FiTrash2 size={18} color="#a8a8b3" />
+						</button>
+					</li>
+				))}
 			</ul>
 		</div>
 	)
