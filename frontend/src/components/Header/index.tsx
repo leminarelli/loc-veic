@@ -16,7 +16,7 @@ export const Header = (props: any) => {
 	return (
 		<HeaderContent>
 			<img src={logopng} alt="Minarelli - Aluguel de Carros" />
-			<span> Olá, {userName} </span>
+			<span> Olá, {userName || props.name} </span>
 
 			<Link className="button" to="/cars/new">
 				Cadastrar novo carro

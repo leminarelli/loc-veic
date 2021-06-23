@@ -1,8 +1,8 @@
 # Locação de Veículos
 
-Desenvolvido com Typescript, Node, React e SQLite.
+Desenvolvido com Typescript, NodeJS, ReactJS e SQLite. Para os testes Jest e Enzyme. E desenvolvimento isolado dos componentes com Storybook.
 
-Como rodar o projeto:
+Como rodar o projeto?
 
 1 - Faça o clone do projeto no GitHub
 
@@ -11,3 +11,11 @@ Como rodar o projeto:
 3 - Execute yarn start na pasta backend para rodar o servidor na porta localhost:8333
 
 4 - Execute yarn start na pasta frontend para rodar o front na porta localhost:3000
+
+Como rodar os testes?
+
+- Basta executar yarn test
+
+Como rodar o storybook?
+
+- Basta executar yarn storybook
