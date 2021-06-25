@@ -9,7 +9,7 @@ import api from '../../services/api'
 import { Cars } from '../../models/Cars'
 import { Header } from '../../components/Header'
 
-import carprentng from '../../assets/img1.jpeg'
+import carprentng from '../../assets/1.jpeg'
 
 export default function Dashboard() {
 	const [cars, setCars] = useState([])

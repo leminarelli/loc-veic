@@ -28,6 +28,9 @@ export const Card = styled.ul`
 		padding: 24px;
 		border-radius: 8px;
 		position: relative;
+		:hover {
+			background: #ffffff69;
+		}
 		button {
 			background: #fff;
 			position: absolute;
@@ -36,6 +39,7 @@ export const Card = styled.ul`
 			border: 0;
 			:hover {
 				opacity: 0.8;
+				background: #ffffff69;
 			}
 		}
 		label {
