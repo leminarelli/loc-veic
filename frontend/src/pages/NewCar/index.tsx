@@ -41,9 +41,24 @@ export default function CarRent() {
 				</section>
 				<FormProvider {...fMethods}>
 					<form onSubmit={fMethods.handleSubmit(handleNewCar)}>
+
 						<input
 							placeholder="Carro / Modelo"
 							{...fMethods.register('model', {
+								required: true,
+							})}
+						/>
+
+						<input
+							placeholder="Cor"
+							{...fMethods.register('color', {
+								required: true,
+							})}
+						/>
+
+						<input
+							placeholder="Quilometragem"
+							{...fMethods.register('quilometragem', {
 								required: true,
 							})}
 						/>

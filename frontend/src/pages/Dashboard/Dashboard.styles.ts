@@ -18,6 +18,7 @@ export const Card = styled.ul`
 	grid-template-columns: repeat(2, 1fr);
 	grid-gap: 24px;
 	list-style: none;
+	cursor: pointer;
 	li {
 		background: #fff;
 		padding: 24px;

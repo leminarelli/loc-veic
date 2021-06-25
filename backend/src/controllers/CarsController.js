@@ -17,6 +17,8 @@ module.exports = {
 				'cars.*',
 				'cars.model',
 				'cars.year',
+				'cars.color',
+				'cars.quilometragem',
 				'cars.description',
 				'cars.city',
 				'cars.price',
@@ -26,14 +28,17 @@ module.exports = {
 	},
 
 	async create(request, response) {
-		const { model, year, description, city, price } = request.body
+		const { model, year, description, city, price, quilometragem, color } =
+			request.body
 		const user_id = request.headers.authorization
 
 		const [id] = await connection('cars').insert({
 			model,
 			year,
 			description,
+			quilometragem,
 			user_id,
+			color,
 			city,
 			price,
 		})

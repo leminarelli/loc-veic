@@ -5,6 +5,8 @@ exports.up = function (knex) {
 		table.decimal('year', 4).notNullable()
 		table.string('description').notNullable()
 		table.string('city').notNullable()
+		table.string('quilometragem').notNullable()
+		table.string('color').notNullable()
 		table.decimal('price').notNullable()
 		table.string('user_id').notNullable()
 		table.foreign('user_id').references('id').inTable('user')

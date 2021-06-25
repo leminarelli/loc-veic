@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { FiTrash2 } from 'react-icons/fi'
 
 import { Container, Title, Card } from './Dashboard.styles'
@@ -10,6 +11,7 @@ import { Header } from '../../components/Header'
 
 export default function Dashboard() {
 	const [cars, setCars] = useState([])
+	const history = useHistory()
 
 	const userId = localStorage.getItem('userId')
 
@@ -46,7 +48,7 @@ export default function Dashboard() {
 			<h1> Carros Cadastrados</h1>
 			<Card>
 				{cars.map((car: Cars) => (
-					<li key={car.id}>
+					<li key={car.id} onClick={() => history.push(`/cars/rent/${car.id}`, { carId: car.id, carInfo: car })}>
 						<Title> CARRO DISPONÍVEL PARA LOCAÇÃO </Title>
 
 						<p>

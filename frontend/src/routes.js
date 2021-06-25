@@ -15,7 +15,7 @@ export default function Routes() {
 				<Route path="/register" component={Register} />
 				<Route path="/dashboard" component={Dashboard} />
 				<Route path="/cars/new" component={NewCar} />
-				<Route path="/cars/rent" component={CarRent} />
+				<Route path="/cars/rent/:id" component={CarRent} />
 			</Switch>
 		</BrowserRouter>
 	)

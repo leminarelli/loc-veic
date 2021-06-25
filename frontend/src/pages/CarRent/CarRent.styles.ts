@@ -10,6 +10,10 @@ export const Container = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	.car-item {
+		max-width: 345px;
+		margin: 20px 0px;
+	}
 	section {
 		p {
 			font-size: 18px;
