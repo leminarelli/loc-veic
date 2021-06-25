@@ -43,7 +43,8 @@ export default function Register(props: any) {
 				<FormProvider {...fMethods}>
 					<form onSubmit={fMethods.handleSubmit(handleRegister)}>
 						<h1>
-							{props.location.state.newsUser.email &&
+							{props.location.state &&
+								props.location.state.newsUser.email &&
 								'Não encontramos seu e-mail, vamos criar sua conta?'}
 						</h1>
 
@@ -57,7 +58,7 @@ export default function Register(props: any) {
 						<input
 							placeholder="E-mail"
 							defaultValue={
-								props.location.state.newsUser.email
+								props.location.state && props.location.state.newsUser.email
 									? props.location.state.newsUser.email
 									: ''
 							}
