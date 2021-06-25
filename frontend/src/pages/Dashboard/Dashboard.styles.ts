@@ -15,10 +15,14 @@ export const Container = styled.div`
 
 export const Card = styled.ul`
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	grid-gap: 24px;
 	list-style: none;
 	cursor: pointer;
+	.car-item {
+		max-width: 100%;
+		margin: 20px 0px;
+	}
 	li {
 		background: #fff;
 		padding: 24px;

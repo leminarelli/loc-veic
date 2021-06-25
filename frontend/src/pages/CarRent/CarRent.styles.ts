@@ -11,7 +11,7 @@ export const Container = styled.div`
 	align-items: center;
 	justify-content: center;
 	.car-item {
-		max-width: 345px;
+		max-width: 100%;
 		margin: 20px 0px;
 	}
 	section {

@@ -9,6 +9,8 @@ import api from '../../services/api'
 import { Cars } from '../../models/Cars'
 import { Header } from '../../components/Header'
 
+import carprentng from '../../assets/img1.jpeg'
+
 export default function Dashboard() {
 	const [cars, setCars] = useState([])
 	const history = useHistory()
@@ -50,6 +52,7 @@ export default function Dashboard() {
 				{cars.map((car: Cars) => (
 					<li key={car.id} onClick={() => history.push(`/cars/rent/${car.id}`, { carId: car.id, carInfo: car })}>
 						<Title> CARRO DISPONÍVEL PARA LOCAÇÃO </Title>
+						<img className="car-item" src={carprentng} alt={car.model} />
 
 						<p>
 							MODELO: <label> {car.model} </label>
