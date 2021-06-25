@@ -13,22 +13,20 @@ import logopng from '../../assets/logo.png'
 export default function Login() {
 	const history = useHistory()
 
-	async function handleLogin(id: any) {
+	async function handleLogin(email: any) {
 		try {
-			const response = await api.post('session', id)
+			const response = await api.post('session', email)
 
-			localStorage.setItem('userId', id)
+			localStorage.setItem('userEmail', response.data.email)
 			localStorage.setItem('userName', response.data.name)
 
 			history.push('/dashboard')
 		} catch (err) {
-			alert('Falha no Login, tente novamente!')
+			history.push('/register', { newsUser: email })
 		}
 	}
-	const fMethods = useForm()
-	// const fErros = fMethods.formState.errors
-	// const fDirtyFields = fMethods.formState.dirtyFields
 
+	const fMethods = useForm()
 	return (
 		<Container>
 			<section>
@@ -37,8 +35,8 @@ export default function Login() {
 					<form onSubmit={fMethods.handleSubmit(handleLogin)}>
 						<h1> Faça o seu Login! </h1>
 						<input
-							placeholder="Sua ID"
-							{...fMethods.register('id', {
+							placeholder="Seu e-mail"
+							{...fMethods.register('email', {
 								required: true,
 							})}
 						/>

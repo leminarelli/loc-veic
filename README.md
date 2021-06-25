@@ -1,6 +1,6 @@
 # Locação de Veículos
 
-Desenvolvido com Typescript, NodeJS, ReactJS, React Router DOM e SQLite. Para os testes Jest e Enzyme. E desenvolvimento isolado dos componentes com Storybook.
+Desenvolvido com Typescript, NodeJS, ReactJS, Styled Components, React Hook Form, React Router DOM e SQLite. Para os testes Jest e Enzyme. E desenvolvimento isolado dos componentes com Storybook.
 
 Como rodar o projeto?
 

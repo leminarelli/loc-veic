@@ -8,15 +8,14 @@ import api from '../../services/api'
 import { Container, Content, InputGroup } from './Register.styles'
 import logopng from '../../assets/logo.png'
 
-export default function Register() {
+export default function Register(props: any) {
 	const history = useHistory()
 
 	async function handleRegister(data: any) {
 		try {
-			const response = await api.post('user', data)
+			await api.post('user', data)
 
-			alert(`Seu ID de acesso: ${response.data.id}`)
-
+			alert('Conta criada com sucesso!')
 			history.push('/')
 		} catch (err) {
 			alert('Erro no cadastro. Tente novamente!')
@@ -25,8 +24,6 @@ export default function Register() {
 	}
 
 	const fMethods = useForm()
-	// const fErros = fMethods.formState.errors
-	// const fDirtyFields = fMethods.formState.dirtyFields
 
 	return (
 		<Container>
@@ -42,8 +39,14 @@ export default function Register() {
 						Voltar
 					</Link>
 				</section>
+
 				<FormProvider {...fMethods}>
 					<form onSubmit={fMethods.handleSubmit(handleRegister)}>
+						<h1>
+							{props.location.state.newsUser.email &&
+								'Não encontramos seu e-mail, vamos criar sua conta?'}
+						</h1>
+
 						<input
 							placeholder="Nome"
 							{...fMethods.register('name', {
@@ -53,6 +56,11 @@ export default function Register() {
 
 						<input
 							placeholder="E-mail"
+							defaultValue={
+								props.location.state.newsUser.email
+									? props.location.state.newsUser.email
+									: ''
+							}
 							{...fMethods.register('email', {
 								required: true,
 							})}
