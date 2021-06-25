@@ -5,8 +5,8 @@ exports.up = function (knex) {
 		table.string('document').notNullable()
 		table.string('dateStart').notNullable()
 		table.string('dateEnd').notNullable()
-		table.string('user_id').notNullable()
-		table.foreign('user_id').references('id').inTable('cars')
+		table.string('car_id').notNullable()
+		table.foreign('car_id').references('id').inTable('cars')
 	})
 }
 

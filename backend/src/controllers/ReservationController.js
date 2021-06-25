@@ -9,13 +9,13 @@ module.exports = {
 
 		response.header('X-Total-Count', count['count(x)'])
 
-		const cars = await connection('reservation')
-			.join('cars', 'cars.id', '=', 'reservation.user_id')
+		const reservation = await connection('reservation')
+			.join('cars', 'cars.id', '=', 'reservation.car_id')
 			.limit(5)
 			.offset((page - 1) * 5)
 			.select([
 				'reservation.*',
-				'reervation.name',
+				'reservation.name',
 				'reservation.document',
 				'reservation.dateStart',
 				'reservation.dateEnd',
@@ -26,10 +26,10 @@ module.exports = {
 
 	async create(request, response) {
 		const { name, document, dateStart, dateEnd } = request.body
-		const user_id = request.headers.authorization
+		const car_id = request.headers.authorization
 
 		const [id] = await connection('reservation').insert({
-			user_id,
+			car_id,
 			name,
 			document,
 			dateStart,

@@ -13,6 +13,7 @@ import carprentng from '../../assets/1.jpeg'
 
 export default function Dashboard() {
 	const [cars, setCars] = useState([])
+	const [reservationData, setCarsReservationData] = useState([])
 	const history = useHistory()
 
 	const userId = localStorage.getItem('userId')
@@ -26,6 +27,18 @@ export default function Dashboard() {
 			})
 			.then((response) => {
 				setCars(response.data)
+			})
+	}, [userId])
+
+	useEffect(() => {
+		api
+			.get('reservation', {
+				headers: {
+					Authorization: userId,
+				},
+			})
+			.then((response) => {
+				setCarsReservationData(response.data)
 			})
 	}, [userId])
 
@@ -84,6 +97,11 @@ export default function Dashboard() {
 							<FiTrash2 size={18} color="#a8a8b3" />
 						</button>
 					</li>
+				))}
+			</Card>
+			<Card>
+				{reservationData.map((r: any) => (
+					console.log("r", r)
 				))}
 			</Card>
 		</Container>

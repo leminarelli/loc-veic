@@ -7,11 +7,22 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { Container } from './Login.styles'
 import api from '../../services/api'
 
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+
 import carpng from '../../assets/car.png'
 import logopng from '../../assets/logo.png'
 
 export default function Login() {
 	const history = useHistory()
+
+	const schema = yup.object().shape({
+		email: yup
+			.string()
+			.email()
+			.min(3)
+			.required('Campo obrigatório, por favor informe seu e-mail'),
+	})
 
 	async function handleLogin(email: any) {
 		try {
@@ -26,7 +37,8 @@ export default function Login() {
 		}
 	}
 
-	const fMethods = useForm()
+	const fMethods = useForm({ resolver: yupResolver(schema) })
+	const { errors } = fMethods.formState
 	return (
 		<Container>
 			<section>
@@ -40,6 +52,7 @@ export default function Login() {
 								required: true,
 							})}
 						/>
+						<p>{errors.email?.message}</p>
 						<button className="button" type="submit">
 							Entrar
 						</button>

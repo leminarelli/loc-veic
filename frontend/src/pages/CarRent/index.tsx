@@ -12,11 +12,21 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
 const schema = yup.object().shape({
-	name: yup.string().required('Campo obrigatório, por favor informe o nome'),
-	document: yup.string().required('Campo obrigatório, por favor informe o documento'),
-	dateStart: yup.string().required('Campo obrigatório, por favor informe a data'),
+	name: yup
+		.string()
+		.min(3)
+		.required('Campo obrigatório, por favor informe o nome'),
+	document: yup
+		.string()
+		.min(3)
+		.required('Campo obrigatório, por favor informe o documento'),
+	dateStart: yup
+		.string()
+		.min(3)
+		.required('Campo obrigatório, por favor informe a data'),
 	dateEnd: yup
 		.string()
+		.min(3)
 		.required('Campo obrigatório, por favor informe a data')
 		.test(
 			`match`,
@@ -29,7 +39,7 @@ const schema = yup.object().shape({
 
 export default function CarRent(props: any) {
 	const [car, setCar] = useState<Cars>()
-	const [messageSucess, setMessageSucess] = useState<string>("")
+	const [messageSucess, setMessageSucess] = useState<string>('')
 	const userId = localStorage.getItem('userId')
 
 	async function onSubmit(data: any) {
@@ -39,7 +49,7 @@ export default function CarRent(props: any) {
 					Authorization: userId,
 				},
 			})
-			setMessageSucess("Reserva realizada com sucesso!")
+			setMessageSucess('Reserva realizada com sucesso!')
 			fMethods.reset()
 		} catch (err) {
 			alert('Erro no cadastro do carro! Tente Novamente!')

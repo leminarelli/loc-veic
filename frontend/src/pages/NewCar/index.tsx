@@ -3,11 +3,40 @@ import { Link, useHistory } from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Container, Content } from './NewCar.styles'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 
 import api from '../../services/api'
 import logopng from '../../assets/logo.png'
 
 export default function CarRent() {
+	const schema = yup.object().shape({
+		model: yup
+			.string()
+			.min(3)
+			.required('Campo obrigatório, por favor informe o modelo'),
+		color: yup
+			.string()
+			.min(3)
+			.required('Campo obrigatório, por favor informe a cor'),
+		quilometragem: yup
+			.string()
+			.min(3)
+			.required('Campo obrigatório, por favor informe a quilometragem'),
+		year: yup
+			.string()
+			.min(3)
+			.required('Campo obrigatório, por favor informe o ano do veículo'),
+		price: yup
+			.string()
+			.min(3)
+			.required('Campo obrigatório, por favor informe o preço da reserva'),
+		city: yup
+			.string()
+			.min(3)
+			.required('Campo obrigatório, por favor informe o local para retirada'),
+		description: yup.string(),
+	})
 	const history = useHistory()
 	const userId = localStorage.getItem('userId')
 
@@ -23,9 +52,8 @@ export default function CarRent() {
 			alert('Erro no cadastro do carro! Tente Novamente!')
 		}
 	}
-	const fMethods = useForm()
-	// const fErros = fMethods.formState.errors
-	// const fDirtyFields = fMethods.formState.dirtyFields
+	const fMethods = useForm({ resolver: yupResolver(schema) })
+	const { errors } = fMethods.formState
 
 	return (
 		<Container>
@@ -41,13 +69,13 @@ export default function CarRent() {
 				</section>
 				<FormProvider {...fMethods}>
 					<form onSubmit={fMethods.handleSubmit(handleNewCar)}>
-
 						<input
 							placeholder="Carro / Modelo"
 							{...fMethods.register('model', {
 								required: true,
 							})}
 						/>
+						<p>{errors.model?.message}</p>
 
 						<input
 							placeholder="Cor"
@@ -55,6 +83,7 @@ export default function CarRent() {
 								required: true,
 							})}
 						/>
+						<p>{errors.color?.message}</p>
 
 						<input
 							placeholder="Quilometragem"
@@ -62,6 +91,7 @@ export default function CarRent() {
 								required: true,
 							})}
 						/>
+						<p>{errors.quilometragem?.message}</p>
 
 						<input
 							placeholder="Ano"
@@ -69,6 +99,7 @@ export default function CarRent() {
 								required: true,
 							})}
 						/>
+						<p>{errors.year?.message}</p>
 
 						<input
 							placeholder="Valor"
@@ -76,6 +107,7 @@ export default function CarRent() {
 								required: true,
 							})}
 						/>
+						<p>{errors.price?.message}</p>
 
 						<input
 							placeholder="Local de retirada"
@@ -83,6 +115,7 @@ export default function CarRent() {
 								required: true,
 							})}
 						/>
+						<p>{errors.city?.message}</p>
 
 						<textarea
 							placeholder="Descrição"
@@ -90,6 +123,7 @@ export default function CarRent() {
 								required: true,
 							})}
 						/>
+						<p>{errors.description?.message}</p>
 
 						<button className="button" type="submit">
 							Cadastrar
